@@ -1,7 +1,8 @@
 class Configuration:
     """Configuration class"""
 
-    def import_packages(self):
+    @staticmethod
+    def import_packages():
         # Import packages
         import numpy as np
         import seaborn as sns
@@ -20,6 +21,9 @@ class Configuration:
         return np, sns, plt, torch, tf, keras, progressbar, os, cv2, pd, random, Path
 
     def set_directory(self, in_directory):
+        # Call import_packages to get the packages
+        np, sns, plt, torch, tf, keras, progressbar, os, cv2, pd, random, Path = self.import_packages()
+
         if os.path.isdir(in_directory):
             # Set directory - if it exists
             out_directory = in_directory

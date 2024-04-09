@@ -1,11 +1,28 @@
+# Import relevant packages
+import sys
+sys.path.append('/Users/fschneider/Documents/GitHub/monkeyID/')
 
+from mID_class_cfg import Configuration
+
+# Example usage:
+cfg = Configuration()  # configuration class
+
+# Call import_packages method directly from Configuration class
+packages = cfg.import_packages()
+
+# Assign the returned package names to global variables
+np, sns, plt, torch, tf, keras, progressbar, os, cv2, pd, random, Path = packages
+
+# Define machine learning class
 class MachineLearning:
-    def define_model_params(self,in_tuple):
+    def define_model_params(self):
         # Model's parameters (based on best model on Colab)
-        # Determine type and number of layers as well as neurons/layer here
+        # Determine type and number of layers as well as neurons/layer here - use tuples
         param = {
             "avPool": 6,
-            "conv": [64, 16, 32],
+            "conv1": 64,
+            "conv2": 16,
+            "conv3": 32,
             "denLay": 1024
         }
         return param
@@ -56,7 +73,8 @@ class MachineLearning:
         df = pd.read_csv(save_name, index_col=0, low_memory=False)
         return df
 
-    def prepare_img(self, filepath):
+    @staticmethod
+    def prepare_img(filepath):
         # Import, normalise, resize and vectorise image
         img_size = 300
         img_array = cv2.imread(filepath, cv2.IMREAD_GRAYSCALE)
