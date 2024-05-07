@@ -83,6 +83,12 @@ class MachineLearning:
         img_array = img_array.reshape(-1, img_size, img_size, 1)
         return img_array, img_size
 
+    def build_dataframe(self,DF_path):
+       df = ''
+
+        return df
+
+    @staticmethod
     def build_training_set(self, df):
         groups = df['group'].unique()
 

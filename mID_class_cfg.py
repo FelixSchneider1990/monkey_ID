@@ -10,7 +10,7 @@ class Configuration:
         import torch
         import tensorflow as tf
         from tensorflow import keras
-        import progressbar
+        from tqdm import tqdm
         import os
         import cv2
         import pandas as pd
@@ -18,7 +18,7 @@ class Configuration:
         from pathlib import Path
 
         print("Packages imported successfully.")
-        return np, sns, plt, torch, tf, keras, progressbar, os, cv2, pd, random, Path
+        return np, sns, plt, torch, tf, keras, tqdm, os, cv2, pd, random, Path
 
     def set_directory(self, in_directory):
         # Call import_packages to get the packages
